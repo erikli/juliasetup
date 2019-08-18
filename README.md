@@ -8,6 +8,7 @@ This also means that global variables produce a comparatively significant perfor
 ## Install
 1. Follow instructions to install Anaconda Python since a few Julia packages rely on python functionality
 2. Install Julia from julialang.org
+3. **Highly Recommended** Precompile System Image using instructions below
 
 ## Add Julia to PATH
 - Note that this isn't strictly necessary and possibly even advised against on Windows
