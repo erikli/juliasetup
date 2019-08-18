@@ -54,6 +54,9 @@ This also means that global variables produce a comparatively significant perfor
     - Also see
         - `http://www.stochasticlifestyle.com/comparison-differential-equation-solver-suites-matlab-r-julia-python-c-fortran/`
         - `http://www.stochasticlifestyle.com/solving-systems-stochastic-pdes-using-gpus-julia/` for information on using globals (**must use `const` for efficiency**), closures or overloaded types
+- `ProgressLogging`
+    - Progress bars in the style of `ProgressMeter.jl` but which use the Julia 1.0+ logging mechanism
+    - Not in the Julia package registry so needs to be added by `pkg> add https://github.com/adamslc/ProgressLogging.jl` (this is done if you run the `setupjl.jl` script)
 - `PackageCompiler.jl` (`https://github.com/JuliaLang/PackageCompiler.jl`)
     1. **NOTE: PackageCompiler and other packages you wish to precompile into a system image must be installed into the system root and not just into an environment**
     2. put the `buildimg.jl` and `userimg.jl` files in the same directory
@@ -76,3 +79,6 @@ This also means that global variables produce a comparatively significant perfor
 - `CuArrays` -- for GPU acceleration in `DifferentialEquations`
     - Just make the initial conditions a CuArray - `x0 = CuArray(x0)`
     - Need to first install CUDA toolkit (for NVIDIA cards only) from `https://developer.nvidia.com/cuda-toolkit`
+- `ProgressMeter` for nice progress meters on the REPL, also maybe look at the Juno editor progressbars
+- `CSV` for reading and writing `.csv` files
+    - Also depends on `DataFrames` and other friends that may be useful especially if you are from an `R` background
