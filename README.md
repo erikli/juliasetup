@@ -5,6 +5,8 @@ Julia is an option for scientific computing that requires high throughput. Julia
 
 This also means that global variables produce a comparatively significant performance hit on Julia because Julia compiles multiple versions of each function (methods), each of which corresponds to a different type signature both for arguments and any variables used. Since global variables may change type at any time, this means that the Just-in-Time (JIT) must compile a new version of the function if the global changes type. You can get around this by declaring global variables `const` (which interestingly only `const`s their type although other weird things can happen if you do change the value anyways) or by using closures (essentially variable currying) so that the type is known beforehand.
 
+For a much more thorough take from UC Irvince Data Science Initiative with a deeper technical discussion of the design decisions that made Julia attractive, see https://ucidatascienceinitiative.github.io/IntroToJulia/Html/WhyJulia.
+
 ## Install
 1. Follow instructions to install Anaconda Python since a few Julia packages rely on python functionality
 2. Install Julia from julialang.org
