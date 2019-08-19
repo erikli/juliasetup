@@ -70,6 +70,9 @@ This also means that global variables produce a comparatively significant perfor
         - https://medium.com/@sdanisch/compiling-julia-binaries-ddd6d4e0caf4
         - https://docs.julialang.org/en/v1/devdocs/sysimg/#Building-the-Julia-system-image-1 (Apparently this is outdated and soon to be deprecated in favor of PackageCompiler)
         - https://docs.julialang.org/en/v1/manual/modules/index.html
+- `Parameters.jl` https://github.com/mauro3/Parameters.jl and docs at https://mauro3.github.io/Parameters.jl/stable
+    - provides significant speedup over straight closures (setting local variables in a function, then returning a nested function referencing those variables) for some reason
+    - See https://discourse.julialang.org/t/model-configuration-parameterization-file/8982/8
         
 
 ### Possible packages of interest
@@ -82,5 +85,3 @@ This also means that global variables produce a comparatively significant perfor
 - `ProgressMeter` for nice progress meters on the REPL, also maybe look at the Juno editor progressbars
 - `CSV` for reading and writing `.csv` files
     - Also depends on `DataFrames` and other friends that may be useful especially if you are from an `R` background
-- `Parameters.jl`
-    - See https://discourse.julialang.org/t/model-configuration-parameterization-file/8982/8
