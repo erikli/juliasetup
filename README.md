@@ -12,13 +12,13 @@ This also means that global variables produce a comparatively significant perfor
 
 ## Add Julia to PATH
 - Note that this isn't strictly necessary and possibly even advised against on Windows
-- For Windows 10, a possibly better option than actually adding Julia to path is to alias `julia` to `C:\Users\<USERNAME>\AppData\Local\<JULIAFOLDER>\bin\julia.exe` (see `https://stackoverflow.com/questions/20530996/aliases-in-windows-command-prompt` for details on using DOSKEY to create aliases and also how to make them persistent using `.bat` files run via the `AutoRun` registry key)
+- For Windows 10, a possibly better option than actually adding Julia to path is to alias `julia` to `C:\Users\<USERNAME>\AppData\Local\<JULIAFOLDER>\bin\julia.exe` (see https://stackoverflow.com/questions/20530996/aliases-in-windows-command-prompt for details on using DOSKEY to create aliases and also how to make them persistent using `.bat` files run via the `AutoRun` registry key)
 - For Windows 10, "Edit Environment Variables" either by
     - Start menu search "environment variables"
     - right-click "This PC" and go to Properties->Advanced tab->Environment Variables
     - To `PATH` variable, add "C:\Users\<USERNAME>\AppData\Local\<JULIAFOLDER>"
-        - You do not want to add the "bin" folder directly because otherwise other programs with incompatible shared libraries (DLLs) may pick up the wrong dependencies (see `https://github.com/JuliaLang/julia/pull/29141#issuecomment-422481356` for discussion)
-    - Either modify `PATHEXT` to include `.lnk` so that the Julia shortcut will run, or make a symbolic link to `bin\julia.exe` using `mklink` (See `https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc753194(v=ws.11)`)
+        - You do not want to add the "bin" folder directly because otherwise other programs with incompatible shared libraries (DLLs) may pick up the wrong dependencies (see https://github.com/JuliaLang/julia/pull/29141#issuecomment-422481356 for discussion)
+    - Either modify `PATHEXT` to include `.lnk` so that the Julia shortcut will run, or make a symbolic link to `bin\julia.exe` using `mklink` (See https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc753194(v=ws.11))
 - For Windows Subsystem for Linux (WSL) add julia.exe to your path
     - i.e. in `~/.bashrc` add `PATH=/mnt/c/Users/<USERNAME>/AppData/Local/<JULIAFOLDER>/bin`
 
@@ -33,7 +33,7 @@ This also means that global variables produce a comparatively significant perfor
 5. **You will also have to rebuild the system image if you update any of the packages which are in the image - i.e. `Plots` or `DifferentialEquations`**
 
 ## Install Packages (using environments)
-- See `https://julialang.github.io/Pkg.jl/v1/` and `https://docs.julialang.org/en/v1/stdlib/Pkg/index.html` for more information on package management in Julia
+- See https://julialang.github.io/Pkg.jl/v1/ and https://docs.julialang.org/en/v1/stdlib/Pkg/index.html for more information on package management in Julia
 - I suggest using project-specific environments
     - create a folder that will contain the project `projfolder`
     - start Julia from `projfolder` or else start Julia and `cd("<projfolder>")` i.e. `cd("C:\Users\<USERNAME>\Documents\jl_project")`
@@ -45,31 +45,31 @@ This also means that global variables produce a comparatively significant perfor
     - `<Backspace>` to exit `pkg` prompt
 
 ## Recommended Packages (mostly installed if you followed the setup instructions)
-- Plotting (`https://julialang.org/downloads/plotting.html`)
+- Plotting (https://julialang.org/downloads/plotting.html)
     - `Plots` for general plotting
     - `Gadfly` for `R` style plotting using grammar of graphics like `ggplot2`
-- `DifferentialEquations` (`http://docs.juliadiffeq.org/latest/`)
+- `DifferentialEquations` (http://docs.juliadiffeq.org/latest/)
     - The whole reason I'm using Julia is for the performance of this package
-    - See `http://juliadiffeq.org/citing.html` for citing the software
+    - See http://juliadiffeq.org/citing.html for citing the software
     - Also see
-        - `http://www.stochasticlifestyle.com/comparison-differential-equation-solver-suites-matlab-r-julia-python-c-fortran/`
-        - `http://www.stochasticlifestyle.com/solving-systems-stochastic-pdes-using-gpus-julia/` for information on using globals (**must use `const` for efficiency**), closures or overloaded types
+        - http://www.stochasticlifestyle.com/comparison-differential-equation-solver-suites-matlab-r-julia-python-c-fortran/
+        - http://www.stochasticlifestyle.com/solving-systems-stochastic-pdes-using-gpus-julia/ for information on using globals (**must use `const` for efficiency**), closures or overloaded types
 - `ProgressLogging`
     - Progress bars in the style of `ProgressMeter.jl` but which use the Julia 1.0+ logging mechanism
     - Not in the Julia package registry so needs to be added by `pkg> add https://github.com/adamslc/ProgressLogging.jl` (this is done if you run the `setupjl.jl` script)
-- `PackageCompiler.jl` (`https://github.com/JuliaLang/PackageCompiler.jl`)
+- `PackageCompiler.jl` (https://github.com/JuliaLang/PackageCompiler.jl)
     1. **NOTE: PackageCompiler and other packages you wish to precompile into a system image must be installed into the system root and not just into an environment**
     2. put the `buildimg.jl` and `userimg.jl` files in the same directory
     3. `shell> cd /path/to/buildimg/and/userimg/folder`
     4. `shell> julia -L buildimg.jl` with the `buildimg.jl` and `userimg.jl` files included in this repo in the same directory.
     5. `shell> julia -J <path/to/system/image>` - startup command for julia with nice system image
     6. Also see:
-        - `http://gadflyjl.org/stable/` for other instructions on how to use this package
-        - `https://discourse.julialang.org/t/tips-for-using-packagecompiler-jl-on-windows/22295/3` for instructions on using compile_incremental()
-        - `https://gist.github.com/terasakisatoshi/14f8fa8bab35683061306f96b1fcf96f` **gist for building Plots that was necessary for these instructions**
-        - `https://medium.com/@sdanisch/compiling-julia-binaries-ddd6d4e0caf4`
-        - `https://docs.julialang.org/en/v1/devdocs/sysimg/#Building-the-Julia-system-image-1` (Apparently this is outdated and soon to be deprecated in favor of PackageCompiler)
-        - `https://docs.julialang.org/en/v1/manual/modules/index.html`
+        - http://gadflyjl.org/stable/ for other instructions on how to use this package
+        - https://discourse.julialang.org/t/tips-for-using-packagecompiler-jl-on-windows/22295/3 for instructions on using compile_incremental()
+        - https://gist.github.com/terasakisatoshi/14f8fa8bab35683061306f96b1fcf96f **gist for building Plots that was necessary for these instructions**
+        - https://medium.com/@sdanisch/compiling-julia-binaries-ddd6d4e0caf4
+        - https://docs.julialang.org/en/v1/devdocs/sysimg/#Building-the-Julia-system-image-1 (Apparently this is outdated and soon to be deprecated in favor of PackageCompiler)
+        - https://docs.julialang.org/en/v1/manual/modules/index.html
         
 
 ### Possible packages of interest
@@ -78,7 +78,9 @@ This also means that global variables produce a comparatively significant perfor
     - require gfortran
 - `CuArrays` -- for GPU acceleration in `DifferentialEquations`
     - Just make the initial conditions a CuArray - `x0 = CuArray(x0)`
-    - Need to first install CUDA toolkit (for NVIDIA cards only) from `https://developer.nvidia.com/cuda-toolkit`
+    - Need to first install CUDA toolkit (for NVIDIA cards only) from https://developer.nvidia.com/cuda-toolkit
 - `ProgressMeter` for nice progress meters on the REPL, also maybe look at the Juno editor progressbars
 - `CSV` for reading and writing `.csv` files
     - Also depends on `DataFrames` and other friends that may be useful especially if you are from an `R` background
+- `Parameters.jl`
+    - See https://discourse.julialang.org/t/model-configuration-parameterization-file/8982/8
