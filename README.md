@@ -46,7 +46,7 @@ For a much more thorough take from UC Irvince Data Science Initiative with a dee
     - `rm <pkgspec>` to remove package and then `gc` to remove dependencies
     - `<Backspace>` to exit `pkg` prompt
 
-## Recommended Packages (mostly installed if you followed the setup instructions)
+## Recommended Packages (mostly installed if you followed the setup instructions and used `setupjl.jl`)
 - Plotting (https://julialang.org/downloads/plotting.html)
     - `Plots` for general plotting
     - `Gadfly` for `R` style plotting using grammar of graphics like `ggplot2`
