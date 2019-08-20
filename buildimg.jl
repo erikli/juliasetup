@@ -3,6 +3,8 @@ using PackageCompiler
 using Pkg
 
 println( "### PackageCompiler and any packages for which you want to build a system image need to be added into the system root. They cannot be in an environment only." )
+userimgfile = ((@isdefined _buildwithpython) ? (@__DIR__)*"/userimg.jl" : (@__DIR__)*"/with_python/userimg_python.jl")
+println("Userimg File: " * userimgfile)
 
 if in("GR",keys(Pkg.installed()))
     @eval import GR
@@ -32,7 +34,7 @@ else
 end
 
 let
-  files = compile_incremental(pwd()*"\\Project.toml",pwd()*"\\userimg.jl",force=false)
+  files = compile_incremental((@__DIR__)*"\\Project.toml",userimgfile,force=false)
   println(files)
   println("Copy "*files[1]*" somewhere where it will be easy to call `julia -J /path/to/sys.dll`.")
 end
